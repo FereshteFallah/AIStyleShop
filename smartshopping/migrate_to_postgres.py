@@ -64,4 +64,4 @@ subprocess.run(["python", "manage.py", "migrate"], cwd=PROJECT_DIR)
 print("📥 وارد کردن دیتا به PostgreSQL...")
 subprocess.run(["python", "manage.py", "loaddata", "data.json"], cwd=PROJECT_DIR)
 
-print("✅ مهاجرت با موفقیت انجام شد! حالا می‌توانی پروژه را اجرا کنی.")
+print("✅ successfully")

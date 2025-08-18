@@ -7,10 +7,10 @@ from .models import Order, OrderItem
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
 
-    # پیدا کردن سفارش باز یا ساختن جدید
+  
     order, created = Order.objects.get_or_create(user=request.user, status='pending')
 
-    # اضافه یا بروزرسانی آیتم
+  
     item, item_created = OrderItem.objects.get_or_create(
         order=order,
         product=product,
