@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+import dj_database_url
+from decouple import config
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -89,7 +93,7 @@ WSGI_APPLICATION = 'smartshopping.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-
+"""
 
 DATABASES = {
     'default': {
@@ -102,8 +106,17 @@ DATABASES = {
     }
 }
 
-
-
+"""
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config(
+            'DATABASE_URL',
+            default='postgres://myuser:mypassword@localhost:5432/smartshoppingdb'
+        ),
+        conn_max_age=600,
+        ssl_require=False  
+    )
+}
 
 
 # Password validation
